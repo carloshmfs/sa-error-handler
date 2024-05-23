@@ -1,2 +1,4 @@
 # build and cmake directories
 build/
+
+compile_commands.json
