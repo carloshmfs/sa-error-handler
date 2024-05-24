@@ -2,6 +2,7 @@
 #include <winnt.h>
 #include <stdio.h>
 #include <iostream>
+#include <spdlog/spdlog.h>
 
 static void openConsole()
 {
@@ -17,6 +18,7 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
     if (fdwReason == DLL_PROCESS_ATTACH) {
         openConsole();
         std::cout << "Hello From DllMain()" << std::endl;
+        spdlog::info("Welcome to spdlog!");
     }
 
     return TRUE;

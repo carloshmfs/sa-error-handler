@@ -10,13 +10,16 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 11)
 
+# Add libs to project
+add_subdirectory(libs/spdlog EXCLUDE_FROM_ALL SYSTEM)
+
 # Project target setup
 file(GLOB SOURCES
     "src/*.cpp"
     "src/*.h"
 )
 add_library(${CMAKE_PROJECT_NAME} SHARED ${SOURCES})
-target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC "include")
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE spdlog)
 
 set_target_properties(${CMAKE_PROJECT_NAME} 
     PROPERTIES
